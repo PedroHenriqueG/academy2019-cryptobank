@@ -9,17 +9,19 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '*',
-      redirect: '/app'
+      path: '/login',
+      name: 'Login',
+      component: () => import('./views/Login.vue')
     },
     {
-      path: '/',
-      redirect: '/app'
+      path: '/createAccount',
+      name: 'createAccount',
+      component: () => import('./views/CreateAccount.vue')
     },
     {
-      path: '/app',
-      name: 'app',
-      component: () => import(/* webpackChunkName: "login" */ './views/About.vue')
+      path: '/home',
+      name: 'home',
+      component: () => import('./views/Home.vue')
     }
   ]
 })
