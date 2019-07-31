@@ -25,5 +25,11 @@ yarn run test
 yarn run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Install VUE CLI
+yarn global add @vue/cli
+
+##yarn server
+yarn global add sever
+
+### Instalar módulo do firebase
+npm install --save firebase
