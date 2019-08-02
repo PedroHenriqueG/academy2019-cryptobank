@@ -30,17 +30,21 @@
           />
         </div>
 
-        <div class="actions">
-          <button type="submit" class="center" @click="submitLogin">Entrar</button>
-           <p>Não tem uma conta? <router-link to="/createAccount">Criar uma</router-link></p>
+         <div class="actions">
+          <button type="submit" class="center" @click="submitLogin"><small>Entrar</small></button>
+          </div>
+        <div id="novo-usuario">
+          <small>Novo Usuário? <router-link to="/createAccount">Criar conta</router-link></small>
         </div>
-
         <br />
-
       </form>
     </div>
   </div>
 </template>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+</style>
 
 <script>
 import firebase from 'firebase'
@@ -57,8 +61,7 @@ export default {
     submitLogin () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          alert('Autenticado com sucesso!')
-          this.$router.push({ path: '/home' })
+          this.$router.push({ path: '/principal' })
         })
         .catch(error => {
           alert('Falha na autenticação' + error.message)
@@ -68,13 +71,31 @@ export default {
 }
 </script>
 
-<style scoped>
-.login {
-  overflow: auto;
-  background: url("../assets/fundo.png") no-repeat center fixed;
+<style>
+body{
+  overflow:hidden;
+  background: url("../assets/fundo.png") no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
+}
+
+#novo-usuario {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 15px;
+  margin-top: 4px;
+  color: #ffffff;
+  display: block;
+  margin-top:15px;
+  margin-left:5px;
+}
+
+a {
+   text-decoration: none;
+   color:#ffffff;
+   font-size:15px;
+   font-weight: bold;
 }
 
 .login > .content {
@@ -90,6 +111,11 @@ export default {
 
 .login-form {
   margin-top: 78px;
+  margin-left:-40px;
+  text-align: left;
+  display: block;
+  font-size:15px;
+  font-family: Roboto;
 }
 
 .input-control {
@@ -102,10 +128,10 @@ export default {
 
 .input-control > .input {
   height: 45px;
-  width: 395px;
+  width: 370px;
   border-radius: 5px;
   border-width: 0;
-  background: #fff;
+  background: #ffffff;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   padding: 0 25px;
@@ -118,23 +144,23 @@ export default {
 .login-form > .actions > button[type="submit"] {
   background-color: #fa7268;
   border: 0;
-  border-radius: 24px;
+  border-radius: 5px;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+  font-family: Roboto;
   font-size: 18px;
-  width: 160px;
+  width: 100px;
   height: 48px;
+  text-align: center;
   cursor: pointer;
 }
 
 .logo {
-  margin: auto;
+  margin-top:21px;
   display: block;
 }
 
 .campos {
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 5px;
 }
 </style>
