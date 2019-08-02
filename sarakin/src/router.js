@@ -9,6 +9,11 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '*',
+      name: '/login',
+      component: () => import('./views/Login.vue')
+    },
+    {
       path: '/login',
       name: 'Login',
       component: () => import('./views/Login.vue')
@@ -19,9 +24,27 @@ const router = new Router({
       component: () => import('./views/CreateAccount.vue')
     },
     {
-      path: '/home',
-      name: 'home',
-      component: () => import('./views/Home.vue')
+      path: '/depositar',
+      name: 'depositar',
+      component: () => import('./views/Depositar.vue')
+    },
+    {
+      path: '/pagar',
+      name: 'pagar',
+      component: () => import('./views/Pagar.vue')
+    },
+    {
+      path: '/transferir',
+      name: '/trasnferir',
+      component: () => import('./views/Transferir.vue')
+    },
+    {
+      path: '/principal',
+      name: 'Principal',
+      component: () => import('./views/Principal.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
