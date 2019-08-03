@@ -10,7 +10,7 @@
               <label>Saldo disponível</label>
             </div>
             <div id="saldo">
-              <label @click="saldoUsuario">Valor</label>
+              <label> $KA {{saldo}} </label>
             </div>
           </div>
 
@@ -58,6 +58,23 @@ export default {
   name: 'principal',
   components: {
   },
+  data () {
+    return {
+      saldo: 0,
+      userUid: []
+    }
+  },
+  mounted () {
+    this.userUid = firebase.auth().currentUser.uid
+    firebase.firestore().collection('usuario')
+      .where('userUid', '==', this.userUid).get().then((snapshot) => {
+        snapshot.docs.map(doc => {
+          this.saldo += parseInt(doc.data().valor)
+        })
+      }).catch(error => {
+        throw new Error(error)
+      })
+  },
   methods: {
     logout () {
       firebase.auth().signOut().then(() => {
@@ -72,15 +89,6 @@ export default {
     },
     transferir () {
       this.$router.push({ path: '/transferir' })
-    },
-    saldoUsuario () {
-      let total = 0
-      firebase.firestore().collection('usuario').get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          total += parseInt(doc.data().valor)
-        })
-        alert('Total: ' + total)
-      })
     }
   }
 }
