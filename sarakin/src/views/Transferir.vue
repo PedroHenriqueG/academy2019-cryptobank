@@ -2,7 +2,7 @@
   <div class="principal">
         <div class="content center">
             <div id="logo">
-            <img :src="require('../assets/logo.png')" alt="Logo"/>
+            <img :src="require('../assets/logo.webp')" alt="Logo"/>
             </div>
 
             <div class="container">
@@ -10,7 +10,7 @@
                   <div id="depositarTopo">
                       <div class="textoDepositar">
                         <div id="iconeVoltar">
-                          <img :src="require('../assets/voltar.png')" alt="Icone" @click="voltar"/>
+                          <img :src="require('../assets/voltar.webp')" alt="Icone" @click="voltar"/>
                         </div>
                         <small>Depositar</small>
                       </div>
