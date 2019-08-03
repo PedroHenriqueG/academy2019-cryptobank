@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="content center">
-      <img class="logo" :src="require('../assets/logo.png')" alt="Logo" />
+      <img class="logo" :src="require('../assets/logo.webp')" alt="Logo" />
 
       <form class="login-form" @submit.prevent="submitLogin">
         <div class="input-control">
@@ -74,7 +74,7 @@ export default {
 <style>
 body{
   overflow:hidden;
-  background: url("../assets/fundo.png") no-repeat;
+  background: url("../assets/fundo.webp") no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;

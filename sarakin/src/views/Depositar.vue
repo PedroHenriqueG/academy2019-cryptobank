@@ -2,7 +2,7 @@
   <div class="principal">
         <div class="content center">
             <div id="logo">
-            <img :src="require('../assets/logo.png')" alt="Logo"/>
+            <img :src="require('../assets/logo.webp')" alt="Logo"/>
             </div>
 
             <div class="container">
@@ -10,7 +10,7 @@
                   <div id="depositarTopo">
                       <div class="textoDepositar">
                         <div id="iconeVoltar">
-                          <img :src="require('../assets/voltar.png')" alt="Icone" @click="voltar"/>
+                          <img :src="require('../assets/voltar.webp')" alt="Icone" @click="voltar"/>
                         </div>
                         <small>Depositar</small>
                       </div>
@@ -61,7 +61,7 @@ export default {
           alert('Erro ao depositar \n\n' + error)
         })
         // Adicionar deposito na coleção usuário
-      firebase.firestore().collection('usuario').doc(docUsuario).set({ id: docUsuario, valor, userUid})
+      firebase.firestore().collection('usuario').doc(docUsuario).set({ id: docUsuario, valor, userUid })
         .then(() => {
           alert('Depositado com sucesso!')
           this.$router.push('/principal')

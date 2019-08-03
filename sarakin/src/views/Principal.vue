@@ -2,7 +2,7 @@
   <div class="principal">
     <div class="content center">
         <div id="logo">
-          <img :src="require('../assets/logo.png')" alt="Logo"/>
+          <img :src="require('../assets/logo.webp')" alt="Logo"/>
         </div>
 
           <div id="caixa">
@@ -10,13 +10,13 @@
               <label>Saldo disponível</label>
             </div>
             <div id="saldo">
-              <label @click="teste">Valor</label>
+              <label @click="saldoUsuario">Valor</label>
             </div>
           </div>
 
           <div class="opcoes">
             <div class="icone">
-               <img :src="require('../assets/porco.png')" alt="Logo"/>
+               <img :src="require('../assets/porco.webp')" alt="Logo"/>
             </div>
             <div class="textos">
               <label @click="depositar">Depositar</label>
@@ -25,7 +25,7 @@
 
           <div class="opcoes">
             <div class="icone">
-               <img :src="require('../assets/pagar.png')" alt="Logo"/>
+               <img :src="require('../assets/pagar.webp')" alt="Logo"/>
             </div>
             <div class="textos">
               <label @click="pagar">Pagar</label>
@@ -34,7 +34,7 @@
 
           <div class="opcoes">
             <div class="icone">
-               <img :src="require('../assets/transferir.png')" alt="Logo"/>
+               <img :src="require('../assets/transferir.webp')" alt="Logo"/>
             </div>
             <div class="textos">
               <label @click="transferir">Transferir</label>
@@ -73,28 +73,23 @@ export default {
     transferir () {
       this.$router.push({ path: '/transferir' })
     },
-     teste () {
+    saldoUsuario () {
       let total = 0
-      let saldo = 0
-      const userUid = firebase.auth().currentUser.uid
-      if (userUid) {
       firebase.firestore().collection('usuario').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-         total += this.userUid.doc.data().saldo
+          total += parseInt(doc.data().valor)
         })
-        saldo = total + parseInt(doc.data().saldo)
-        alert('Total: ' + saldo)
+        alert('Total: ' + total)
       })
     }
   }
- }
 }
 </script>
 
 <style>
 
 body{
-  background: url("../assets/fundo.png") no-repeat;
+  background: url("../assets/fundo.webp") no-repeat;
   background-size: cover;
   margin:0px;
 }
